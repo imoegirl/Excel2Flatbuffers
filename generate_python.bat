@@ -1,0 +1,1 @@
+.\flatc\flatc.exe --python -o .\generated_python\ .\generated_fbs\Monster.fbs --gen-onefile
