@@ -1,0 +1,1 @@
+.\flatc\flatc.exe --csharp -o .\generated_csharp\ .\generated_fbs\Monster.fbs --gen-onefile
