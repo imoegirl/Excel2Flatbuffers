@@ -1,0 +1,14 @@
+
+table TShowConditionConfigRowData {
+    ID:int32;
+    OpenTime:string;
+    EndTime:string;
+    StyleCondition:int32;
+    StyleNum:int32;
+    ClothesCondition:string;
+}
+
+
+table TShowConditionConfig {
+    datalist:[TShowConditionConfigRowData];
+}

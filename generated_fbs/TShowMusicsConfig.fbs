@@ -1,0 +1,12 @@
+
+table TShowMusicsConfigRowData {
+    ID:int32;
+    NoteName:string;
+    BGMName:string;
+    TotalTime:int32;
+}
+
+
+table TShowMusicsConfig {
+    datalist:[TShowMusicsConfigRowData];
+}

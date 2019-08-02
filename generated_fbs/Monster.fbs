@@ -1,6 +1,0 @@
-
-table FBMonster {
-	name: string;
-	hp: int32;
-	attack: int32;
-}
