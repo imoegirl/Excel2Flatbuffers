@@ -3,7 +3,7 @@ from datetime import date, datetime
 import sys
 import os
 
-test_file = './excel/走秀配置表.xlsx'
+test_file = './excel/TestExcel.xlsx'
 fbs_root_path = './generated_fbs/'
 
 __excel_extension = 'xlsx'
