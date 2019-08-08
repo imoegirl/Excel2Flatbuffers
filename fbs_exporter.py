@@ -88,8 +88,16 @@ def __export_sheet_to_fbs(sheet):
 	with open(fbs_file_path, 'w') as f:
 		f.write(write_str)
 
+
+# 生成中间Python层
+def __generate_middle_python_file():
+	command = './flatc/flatc.exe --python -o ./generated_python/ ./generated_fbs/Monster.fbs --gen-onefile'
+
+
 # export_excel_to_fbs(test_file)
 export_all_excel_to_fbs('./excel', './generated_fbs')
+
+
 
 	# raw_data = item.split('text:')
 	# data = raw_data[1].trim()
