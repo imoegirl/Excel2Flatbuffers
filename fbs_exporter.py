@@ -89,13 +89,43 @@ def __export_sheet_to_fbs(sheet):
 		f.write(write_str)
 
 
+def __get_all_fbs_file(root_path):
+	file_list = []
+	for root, dirs, files in os.walk(root_path):
+		for file in files:
+			file_path = os.path.join(root, file)
+			file_list.append(file_path)
+	return file_list
+
+
+def __generated_python_file(fbs_file):
+	root_path = os.getcwd()
+	flatc_path = os.path.join(root_path, 'flatc/flatc.exe')
+	python_path = os.path.join(root_path, 'generated_python')
+	command = '{} --python -o {} {} --gen-onefile'.format(flatc_path, python_path, fbs_file)
+	os.system(command)
+	# print(command)
+
+
+
 # 生成中间Python层
 def __generate_middle_python_file():
-	command = './flatc/flatc.exe --python -o ./generated_python/ ./generated_fbs/Monster.fbs --gen-onefile'
+	# os.chdir('./')
+	# root = os.getcwd()
+	# command = './flatc/flatc.exe --python -o ./generated_python/ ./generated_fbs/TShowMusicsConfig.fbs --gen-onefile'
+	# os.system(command)
+	root = os.path.join(os.getcwd(), 'generated_fbs')
+	fbs_path_list = __get_all_fbs_file(root)
+	for file_path in fbs_path_list:
+		__generated_python_file(file_path)
 
 
-# export_excel_to_fbs(test_file)
+
+# os.chdir('./')
+# __root_path = os.getcwd()
+
 export_all_excel_to_fbs('./excel', './generated_fbs')
+__generate_middle_python_file()
 
 
 

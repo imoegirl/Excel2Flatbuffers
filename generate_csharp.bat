@@ -1,1 +1,1 @@
-.\flatc\flatc.exe --csharp -o .\generated_csharp\ .\generated_fbs\Monster.fbs --gen-onefile
+.\flatc\flatc.exe --csharp -o .\generated_csharp\ .\generated_fbs\TShowMusicsConfig.fbs --gen-onefile
