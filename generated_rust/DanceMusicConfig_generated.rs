@@ -8,15 +8,15 @@ use std::cmp::Ordering;
 extern crate flatbuffers;
 use self::flatbuffers::EndianScalar;
 
-pub enum TShowMusicsConfigRowDataOffset {}
+pub enum DanceMusicConfigRowDataOffset {}
 #[derive(Copy, Clone, Debug, PartialEq)]
 
-pub struct TShowMusicsConfigRowData<'a> {
+pub struct DanceMusicConfigRowData<'a> {
   pub _tab: flatbuffers::Table<'a>,
 }
 
-impl<'a> flatbuffers::Follow<'a> for TShowMusicsConfigRowData<'a> {
-    type Inner = TShowMusicsConfigRowData<'a>;
+impl<'a> flatbuffers::Follow<'a> for DanceMusicConfigRowData<'a> {
+    type Inner = DanceMusicConfigRowData<'a>;
     #[inline]
     fn follow(buf: &'a [u8], loc: usize) -> Self::Inner {
         Self {
@@ -25,18 +25,18 @@ impl<'a> flatbuffers::Follow<'a> for TShowMusicsConfigRowData<'a> {
     }
 }
 
-impl<'a> TShowMusicsConfigRowData<'a> {
+impl<'a> DanceMusicConfigRowData<'a> {
     #[inline]
     pub fn init_from_table(table: flatbuffers::Table<'a>) -> Self {
-        TShowMusicsConfigRowData {
+        DanceMusicConfigRowData {
             _tab: table,
         }
     }
     #[allow(unused_mut)]
     pub fn create<'bldr: 'args, 'args: 'mut_bldr, 'mut_bldr>(
         _fbb: &'mut_bldr mut flatbuffers::FlatBufferBuilder<'bldr>,
-        args: &'args TShowMusicsConfigRowDataArgs<'args>) -> flatbuffers::WIPOffset<TShowMusicsConfigRowData<'bldr>> {
-      let mut builder = TShowMusicsConfigRowDataBuilder::new(_fbb);
+        args: &'args DanceMusicConfigRowDataArgs<'args>) -> flatbuffers::WIPOffset<DanceMusicConfigRowData<'bldr>> {
+      let mut builder = DanceMusicConfigRowDataBuilder::new(_fbb);
       builder.add_TotalTime2(args.TotalTime2);
       builder.add_TotalTime(args.TotalTime);
       if let Some(x) = args.BGMName { builder.add_BGMName(x); }
@@ -53,37 +53,37 @@ impl<'a> TShowMusicsConfigRowData<'a> {
 
   #[inline]
   pub fn iD(&self) -> i32 {
-    self._tab.get::<i32>(TShowMusicsConfigRowData::VT_ID, Some(0)).unwrap()
+    self._tab.get::<i32>(DanceMusicConfigRowData::VT_ID, Some(0)).unwrap()
   }
   #[inline]
   pub fn noteName(&self) -> Option<&'a str> {
-    self._tab.get::<flatbuffers::ForwardsUOffset<&str>>(TShowMusicsConfigRowData::VT_NOTENAME, None)
+    self._tab.get::<flatbuffers::ForwardsUOffset<&str>>(DanceMusicConfigRowData::VT_NOTENAME, None)
   }
   #[inline]
   pub fn BGMName(&self) -> Option<&'a str> {
-    self._tab.get::<flatbuffers::ForwardsUOffset<&str>>(TShowMusicsConfigRowData::VT_BGMNAME, None)
+    self._tab.get::<flatbuffers::ForwardsUOffset<&str>>(DanceMusicConfigRowData::VT_BGMNAME, None)
   }
   #[inline]
   pub fn TotalTime(&self) -> i32 {
-    self._tab.get::<i32>(TShowMusicsConfigRowData::VT_TOTALTIME, Some(0)).unwrap()
+    self._tab.get::<i32>(DanceMusicConfigRowData::VT_TOTALTIME, Some(0)).unwrap()
   }
   #[inline]
   pub fn TotalTime2(&self) -> f32 {
-    self._tab.get::<f32>(TShowMusicsConfigRowData::VT_TOTALTIME2, Some(0.0)).unwrap()
+    self._tab.get::<f32>(DanceMusicConfigRowData::VT_TOTALTIME2, Some(0.0)).unwrap()
   }
 }
 
-pub struct TShowMusicsConfigRowDataArgs<'a> {
+pub struct DanceMusicConfigRowDataArgs<'a> {
     pub iD: i32,
     pub noteName: Option<flatbuffers::WIPOffset<&'a  str>>,
     pub BGMName: Option<flatbuffers::WIPOffset<&'a  str>>,
     pub TotalTime: i32,
     pub TotalTime2: f32,
 }
-impl<'a> Default for TShowMusicsConfigRowDataArgs<'a> {
+impl<'a> Default for DanceMusicConfigRowDataArgs<'a> {
     #[inline]
     fn default() -> Self {
-        TShowMusicsConfigRowDataArgs {
+        DanceMusicConfigRowDataArgs {
             iD: 0,
             noteName: None,
             BGMName: None,
@@ -92,55 +92,55 @@ impl<'a> Default for TShowMusicsConfigRowDataArgs<'a> {
         }
     }
 }
-pub struct TShowMusicsConfigRowDataBuilder<'a: 'b, 'b> {
+pub struct DanceMusicConfigRowDataBuilder<'a: 'b, 'b> {
   fbb_: &'b mut flatbuffers::FlatBufferBuilder<'a>,
   start_: flatbuffers::WIPOffset<flatbuffers::TableUnfinishedWIPOffset>,
 }
-impl<'a: 'b, 'b> TShowMusicsConfigRowDataBuilder<'a, 'b> {
+impl<'a: 'b, 'b> DanceMusicConfigRowDataBuilder<'a, 'b> {
   #[inline]
   pub fn add_iD(&mut self, iD: i32) {
-    self.fbb_.push_slot::<i32>(TShowMusicsConfigRowData::VT_ID, iD, 0);
+    self.fbb_.push_slot::<i32>(DanceMusicConfigRowData::VT_ID, iD, 0);
   }
   #[inline]
   pub fn add_noteName(&mut self, noteName: flatbuffers::WIPOffset<&'b  str>) {
-    self.fbb_.push_slot_always::<flatbuffers::WIPOffset<_>>(TShowMusicsConfigRowData::VT_NOTENAME, noteName);
+    self.fbb_.push_slot_always::<flatbuffers::WIPOffset<_>>(DanceMusicConfigRowData::VT_NOTENAME, noteName);
   }
   #[inline]
   pub fn add_BGMName(&mut self, BGMName: flatbuffers::WIPOffset<&'b  str>) {
-    self.fbb_.push_slot_always::<flatbuffers::WIPOffset<_>>(TShowMusicsConfigRowData::VT_BGMNAME, BGMName);
+    self.fbb_.push_slot_always::<flatbuffers::WIPOffset<_>>(DanceMusicConfigRowData::VT_BGMNAME, BGMName);
   }
   #[inline]
   pub fn add_TotalTime(&mut self, TotalTime: i32) {
-    self.fbb_.push_slot::<i32>(TShowMusicsConfigRowData::VT_TOTALTIME, TotalTime, 0);
+    self.fbb_.push_slot::<i32>(DanceMusicConfigRowData::VT_TOTALTIME, TotalTime, 0);
   }
   #[inline]
   pub fn add_TotalTime2(&mut self, TotalTime2: f32) {
-    self.fbb_.push_slot::<f32>(TShowMusicsConfigRowData::VT_TOTALTIME2, TotalTime2, 0.0);
+    self.fbb_.push_slot::<f32>(DanceMusicConfigRowData::VT_TOTALTIME2, TotalTime2, 0.0);
   }
   #[inline]
-  pub fn new(_fbb: &'b mut flatbuffers::FlatBufferBuilder<'a>) -> TShowMusicsConfigRowDataBuilder<'a, 'b> {
+  pub fn new(_fbb: &'b mut flatbuffers::FlatBufferBuilder<'a>) -> DanceMusicConfigRowDataBuilder<'a, 'b> {
     let start = _fbb.start_table();
-    TShowMusicsConfigRowDataBuilder {
+    DanceMusicConfigRowDataBuilder {
       fbb_: _fbb,
       start_: start,
     }
   }
   #[inline]
-  pub fn finish(self) -> flatbuffers::WIPOffset<TShowMusicsConfigRowData<'a>> {
+  pub fn finish(self) -> flatbuffers::WIPOffset<DanceMusicConfigRowData<'a>> {
     let o = self.fbb_.end_table(self.start_);
     flatbuffers::WIPOffset::new(o.value())
   }
 }
 
-pub enum TShowMusicsConfigOffset {}
+pub enum DanceMusicConfigOffset {}
 #[derive(Copy, Clone, Debug, PartialEq)]
 
-pub struct TShowMusicsConfig<'a> {
+pub struct DanceMusicConfig<'a> {
   pub _tab: flatbuffers::Table<'a>,
 }
 
-impl<'a> flatbuffers::Follow<'a> for TShowMusicsConfig<'a> {
-    type Inner = TShowMusicsConfig<'a>;
+impl<'a> flatbuffers::Follow<'a> for DanceMusicConfig<'a> {
+    type Inner = DanceMusicConfig<'a>;
     #[inline]
     fn follow(buf: &'a [u8], loc: usize) -> Self::Inner {
         Self {
@@ -149,18 +149,18 @@ impl<'a> flatbuffers::Follow<'a> for TShowMusicsConfig<'a> {
     }
 }
 
-impl<'a> TShowMusicsConfig<'a> {
+impl<'a> DanceMusicConfig<'a> {
     #[inline]
     pub fn init_from_table(table: flatbuffers::Table<'a>) -> Self {
-        TShowMusicsConfig {
+        DanceMusicConfig {
             _tab: table,
         }
     }
     #[allow(unused_mut)]
     pub fn create<'bldr: 'args, 'args: 'mut_bldr, 'mut_bldr>(
         _fbb: &'mut_bldr mut flatbuffers::FlatBufferBuilder<'bldr>,
-        args: &'args TShowMusicsConfigArgs<'args>) -> flatbuffers::WIPOffset<TShowMusicsConfig<'bldr>> {
-      let mut builder = TShowMusicsConfigBuilder::new(_fbb);
+        args: &'args DanceMusicConfigArgs<'args>) -> flatbuffers::WIPOffset<DanceMusicConfig<'bldr>> {
+      let mut builder = DanceMusicConfigBuilder::new(_fbb);
       if let Some(x) = args.datalist { builder.add_datalist(x); }
       builder.finish()
     }
@@ -168,41 +168,41 @@ impl<'a> TShowMusicsConfig<'a> {
     pub const VT_DATALIST: flatbuffers::VOffsetT = 4;
 
   #[inline]
-  pub fn datalist(&self) -> Option<flatbuffers::Vector<'a, flatbuffers::ForwardsUOffset<TShowMusicsConfigRowData<'a>>>> {
-    self._tab.get::<flatbuffers::ForwardsUOffset<flatbuffers::Vector<flatbuffers::ForwardsUOffset<TShowMusicsConfigRowData<'a>>>>>(TShowMusicsConfig::VT_DATALIST, None)
+  pub fn datalist(&self) -> Option<flatbuffers::Vector<'a, flatbuffers::ForwardsUOffset<DanceMusicConfigRowData<'a>>>> {
+    self._tab.get::<flatbuffers::ForwardsUOffset<flatbuffers::Vector<flatbuffers::ForwardsUOffset<DanceMusicConfigRowData<'a>>>>>(DanceMusicConfig::VT_DATALIST, None)
   }
 }
 
-pub struct TShowMusicsConfigArgs<'a> {
-    pub datalist: Option<flatbuffers::WIPOffset<flatbuffers::Vector<'a , flatbuffers::ForwardsUOffset<TShowMusicsConfigRowData<'a >>>>>,
+pub struct DanceMusicConfigArgs<'a> {
+    pub datalist: Option<flatbuffers::WIPOffset<flatbuffers::Vector<'a , flatbuffers::ForwardsUOffset<DanceMusicConfigRowData<'a >>>>>,
 }
-impl<'a> Default for TShowMusicsConfigArgs<'a> {
+impl<'a> Default for DanceMusicConfigArgs<'a> {
     #[inline]
     fn default() -> Self {
-        TShowMusicsConfigArgs {
+        DanceMusicConfigArgs {
             datalist: None,
         }
     }
 }
-pub struct TShowMusicsConfigBuilder<'a: 'b, 'b> {
+pub struct DanceMusicConfigBuilder<'a: 'b, 'b> {
   fbb_: &'b mut flatbuffers::FlatBufferBuilder<'a>,
   start_: flatbuffers::WIPOffset<flatbuffers::TableUnfinishedWIPOffset>,
 }
-impl<'a: 'b, 'b> TShowMusicsConfigBuilder<'a, 'b> {
+impl<'a: 'b, 'b> DanceMusicConfigBuilder<'a, 'b> {
   #[inline]
-  pub fn add_datalist(&mut self, datalist: flatbuffers::WIPOffset<flatbuffers::Vector<'b , flatbuffers::ForwardsUOffset<TShowMusicsConfigRowData<'b >>>>) {
-    self.fbb_.push_slot_always::<flatbuffers::WIPOffset<_>>(TShowMusicsConfig::VT_DATALIST, datalist);
+  pub fn add_datalist(&mut self, datalist: flatbuffers::WIPOffset<flatbuffers::Vector<'b , flatbuffers::ForwardsUOffset<DanceMusicConfigRowData<'b >>>>) {
+    self.fbb_.push_slot_always::<flatbuffers::WIPOffset<_>>(DanceMusicConfig::VT_DATALIST, datalist);
   }
   #[inline]
-  pub fn new(_fbb: &'b mut flatbuffers::FlatBufferBuilder<'a>) -> TShowMusicsConfigBuilder<'a, 'b> {
+  pub fn new(_fbb: &'b mut flatbuffers::FlatBufferBuilder<'a>) -> DanceMusicConfigBuilder<'a, 'b> {
     let start = _fbb.start_table();
-    TShowMusicsConfigBuilder {
+    DanceMusicConfigBuilder {
       fbb_: _fbb,
       start_: start,
     }
   }
   #[inline]
-  pub fn finish(self) -> flatbuffers::WIPOffset<TShowMusicsConfig<'a>> {
+  pub fn finish(self) -> flatbuffers::WIPOffset<DanceMusicConfig<'a>> {
     let o = self.fbb_.end_table(self.start_);
     flatbuffers::WIPOffset::new(o.value())
   }

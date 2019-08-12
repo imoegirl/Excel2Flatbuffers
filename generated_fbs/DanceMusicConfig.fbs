@@ -1,5 +1,5 @@
 
-table TShowMusicsConfigRowData {
+table DanceMusicConfigRowData {
     iD:int32;
     noteName:string;
     BGMName:string;
@@ -8,6 +8,6 @@ table TShowMusicsConfigRowData {
 }
 
 
-table TShowMusicsConfig {
-    datalist:[TShowMusicsConfigRowData];
+table DanceMusicConfig {
+    datalist:[DanceMusicConfigRowData];
 }

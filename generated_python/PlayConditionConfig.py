@@ -4,41 +4,41 @@
 
 import flatbuffers
 
-class TShowConditionConfig(object):
+class PlayConditionConfig(object):
     __slots__ = ['_tab']
 
     @classmethod
-    def GetRootAsTShowConditionConfig(cls, buf, offset):
+    def GetRootAsPlayConditionConfig(cls, buf, offset):
         n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
-        x = TShowConditionConfig()
+        x = PlayConditionConfig()
         x.Init(buf, n + offset)
         return x
 
-    # TShowConditionConfig
+    # PlayConditionConfig
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-    # TShowConditionConfig
+    # PlayConditionConfig
     def Datalist(self, j):
         o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(4))
         if o != 0:
             x = self._tab.Vector(o)
             x += flatbuffers.number_types.UOffsetTFlags.py_type(j) * 4
             x = self._tab.Indirect(x)
-            from .TShowConditionConfigRowData import TShowConditionConfigRowData
-            obj = TShowConditionConfigRowData()
+            from .PlayConditionConfigRowData import PlayConditionConfigRowData
+            obj = PlayConditionConfigRowData()
             obj.Init(self._tab.Bytes, x)
             return obj
         return None
 
-    # TShowConditionConfig
+    # PlayConditionConfig
     def DatalistLength(self):
         o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(4))
         if o != 0:
             return self._tab.VectorLen(o)
         return 0
 
-def TShowConditionConfigStart(builder): builder.StartObject(1)
-def TShowConditionConfigAddDatalist(builder, datalist): builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(datalist), 0)
-def TShowConditionConfigStartDatalistVector(builder, numElems): return builder.StartVector(4, numElems, 4)
-def TShowConditionConfigEnd(builder): return builder.EndObject()
+def PlayConditionConfigStart(builder): builder.StartObject(1)
+def PlayConditionConfigAddDatalist(builder, datalist): builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(datalist), 0)
+def PlayConditionConfigStartDatalistVector(builder, numElems): return builder.StartVector(4, numElems, 4)
+def PlayConditionConfigEnd(builder): return builder.EndObject()

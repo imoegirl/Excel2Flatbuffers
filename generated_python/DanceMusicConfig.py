@@ -4,41 +4,41 @@
 
 import flatbuffers
 
-class TShowMusicsConfig(object):
+class DanceMusicConfig(object):
     __slots__ = ['_tab']
 
     @classmethod
-    def GetRootAsTShowMusicsConfig(cls, buf, offset):
+    def GetRootAsDanceMusicConfig(cls, buf, offset):
         n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
-        x = TShowMusicsConfig()
+        x = DanceMusicConfig()
         x.Init(buf, n + offset)
         return x
 
-    # TShowMusicsConfig
+    # DanceMusicConfig
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-    # TShowMusicsConfig
+    # DanceMusicConfig
     def Datalist(self, j):
         o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(4))
         if o != 0:
             x = self._tab.Vector(o)
             x += flatbuffers.number_types.UOffsetTFlags.py_type(j) * 4
             x = self._tab.Indirect(x)
-            from .TShowMusicsConfigRowData import TShowMusicsConfigRowData
-            obj = TShowMusicsConfigRowData()
+            from .DanceMusicConfigRowData import DanceMusicConfigRowData
+            obj = DanceMusicConfigRowData()
             obj.Init(self._tab.Bytes, x)
             return obj
         return None
 
-    # TShowMusicsConfig
+    # DanceMusicConfig
     def DatalistLength(self):
         o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(4))
         if o != 0:
             return self._tab.VectorLen(o)
         return 0
 
-def TShowMusicsConfigStart(builder): builder.StartObject(1)
-def TShowMusicsConfigAddDatalist(builder, datalist): builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(datalist), 0)
-def TShowMusicsConfigStartDatalistVector(builder, numElems): return builder.StartVector(4, numElems, 4)
-def TShowMusicsConfigEnd(builder): return builder.EndObject()
+def DanceMusicConfigStart(builder): builder.StartObject(1)
+def DanceMusicConfigAddDatalist(builder, datalist): builder.PrependUOffsetTRelativeSlot(0, flatbuffers.number_types.UOffsetTFlags.py_type(datalist), 0)
+def DanceMusicConfigStartDatalistVector(builder, numElems): return builder.StartVector(4, numElems, 4)
+def DanceMusicConfigEnd(builder): return builder.EndObject()

@@ -4,67 +4,67 @@
 
 import flatbuffers
 
-class TShowConditionConfigRowData(object):
+class PlayConditionConfigRowData(object):
     __slots__ = ['_tab']
 
     @classmethod
-    def GetRootAsTShowConditionConfigRowData(cls, buf, offset):
+    def GetRootAsPlayConditionConfigRowData(cls, buf, offset):
         n = flatbuffers.encode.Get(flatbuffers.packer.uoffset, buf, offset)
-        x = TShowConditionConfigRowData()
+        x = PlayConditionConfigRowData()
         x.Init(buf, n + offset)
         return x
 
-    # TShowConditionConfigRowData
+    # PlayConditionConfigRowData
     def Init(self, buf, pos):
         self._tab = flatbuffers.table.Table(buf, pos)
 
-    # TShowConditionConfigRowData
+    # PlayConditionConfigRowData
     def ID(self):
         o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(4))
         if o != 0:
             return self._tab.Get(flatbuffers.number_types.Int32Flags, o + self._tab.Pos)
         return 0
 
-    # TShowConditionConfigRowData
+    # PlayConditionConfigRowData
     def OpenTime(self):
         o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(6))
         if o != 0:
             return self._tab.String(o + self._tab.Pos)
         return None
 
-    # TShowConditionConfigRowData
+    # PlayConditionConfigRowData
     def EndTime(self):
         o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(8))
         if o != 0:
             return self._tab.String(o + self._tab.Pos)
         return None
 
-    # TShowConditionConfigRowData
+    # PlayConditionConfigRowData
     def StyleCondition(self):
         o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(10))
         if o != 0:
             return self._tab.Get(flatbuffers.number_types.Int32Flags, o + self._tab.Pos)
         return 0
 
-    # TShowConditionConfigRowData
+    # PlayConditionConfigRowData
     def StyleNum(self):
         o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(12))
         if o != 0:
             return self._tab.Get(flatbuffers.number_types.Int32Flags, o + self._tab.Pos)
         return 0
 
-    # TShowConditionConfigRowData
+    # PlayConditionConfigRowData
     def ClothesCondition(self):
         o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(14))
         if o != 0:
             return self._tab.String(o + self._tab.Pos)
         return None
 
-def TShowConditionConfigRowDataStart(builder): builder.StartObject(6)
-def TShowConditionConfigRowDataAddID(builder, ID): builder.PrependInt32Slot(0, ID, 0)
-def TShowConditionConfigRowDataAddOpenTime(builder, OpenTime): builder.PrependUOffsetTRelativeSlot(1, flatbuffers.number_types.UOffsetTFlags.py_type(OpenTime), 0)
-def TShowConditionConfigRowDataAddEndTime(builder, EndTime): builder.PrependUOffsetTRelativeSlot(2, flatbuffers.number_types.UOffsetTFlags.py_type(EndTime), 0)
-def TShowConditionConfigRowDataAddStyleCondition(builder, StyleCondition): builder.PrependInt32Slot(3, StyleCondition, 0)
-def TShowConditionConfigRowDataAddStyleNum(builder, StyleNum): builder.PrependInt32Slot(4, StyleNum, 0)
-def TShowConditionConfigRowDataAddClothesCondition(builder, ClothesCondition): builder.PrependUOffsetTRelativeSlot(5, flatbuffers.number_types.UOffsetTFlags.py_type(ClothesCondition), 0)
-def TShowConditionConfigRowDataEnd(builder): return builder.EndObject()
+def PlayConditionConfigRowDataStart(builder): builder.StartObject(6)
+def PlayConditionConfigRowDataAddID(builder, ID): builder.PrependInt32Slot(0, ID, 0)
+def PlayConditionConfigRowDataAddOpenTime(builder, OpenTime): builder.PrependUOffsetTRelativeSlot(1, flatbuffers.number_types.UOffsetTFlags.py_type(OpenTime), 0)
+def PlayConditionConfigRowDataAddEndTime(builder, EndTime): builder.PrependUOffsetTRelativeSlot(2, flatbuffers.number_types.UOffsetTFlags.py_type(EndTime), 0)
+def PlayConditionConfigRowDataAddStyleCondition(builder, StyleCondition): builder.PrependInt32Slot(3, StyleCondition, 0)
+def PlayConditionConfigRowDataAddStyleNum(builder, StyleNum): builder.PrependInt32Slot(4, StyleNum, 0)
+def PlayConditionConfigRowDataAddClothesCondition(builder, ClothesCondition): builder.PrependUOffsetTRelativeSlot(5, flatbuffers.number_types.UOffsetTFlags.py_type(ClothesCondition), 0)
+def PlayConditionConfigRowDataEnd(builder): return builder.EndObject()

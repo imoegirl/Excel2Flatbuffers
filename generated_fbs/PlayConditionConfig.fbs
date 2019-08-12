@@ -1,5 +1,5 @@
 
-table TShowConditionConfigRowData {
+table PlayConditionConfigRowData {
     ID:int32;
     OpenTime:string;
     EndTime:string;
@@ -9,6 +9,6 @@ table TShowConditionConfigRowData {
 }
 
 
-table TShowConditionConfig {
-    datalist:[TShowConditionConfigRowData];
+table PlayConditionConfig {
+    datalist:[PlayConditionConfigRowData];
 }
