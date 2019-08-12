@@ -7,18 +7,26 @@
 
 ## 工具内部做的事情如下
 
-1. 将 Excel 表结构解析成 flatbuffers 的 fbs 文件
-2. 通过 flatc 生成目标语言 flatbuffers 代码 (**C#或其他**)
-3. 将 excel 表数据按 flatbuffers 的结构，将每一个表打包成二进制文件。
-4. 生成 Unity3D 客户端加载解析二进制文件代码 (**这一步可以不用本工具生成的代码，可自己手写**)
+- [x] 将 Excel 表结构解析成 flatbuffers 的 fbs 文件
 
+- [x] 通过 flatc 生成目标语言 flatbuffers 代码 (**C#或其他**)
 
+- [x] 将 excel 表数据按 flatbuffers 的结构，将每一个表打包成二进制文件。
+
+- [ ] 生成 Unity3D 客户端加载解析二进制文件代码 (**这一步可以不用本工具生成的代码，可自己手写**)
 
 ## 如何使用
 
-等逻辑写完再写这一段使用说明
+`cd Excel2Flatbuffers` 进入工具目录
+
+然后执行
+
+```python run.py```
+
+> 工具用到了`xlrd`和`flatbuffers`，如果运行报错，提示没有安装这两个模块，需要先使用pip3安装
+>
+> 这个工具用到的Python是 python3.7.2，应该 python3.x 都可以运行吧
 
 
 
-
-### 当前状态: 正在开发中...（预计一周内写完）
+### 详细的说明文档，以及一些预先目录清理工作，晚点补充
