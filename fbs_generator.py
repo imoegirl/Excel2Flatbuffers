@@ -2,6 +2,9 @@ import xlrd
 from datetime import date, datetime
 import sys
 import os
+import shutil
+import time
+
 
 __excel_extension = 'xlsx'
 
@@ -26,7 +29,22 @@ table %s {
 }
 """
 
-def __export_all_excel_to_fbs(excel_root_path, target_fbs_path):
+def __clean_directory(target_path):
+	if not os.path.isdir(target_path):
+		os.mkdir(target_path)
+	try:
+		for root, dirs, files in os.walk(target_path):
+			for file in files:
+				path = os.path.join(root, file)
+				os.remove(path)
+				print('清理文件: ', path)
+	except:
+		print('旧数据清理失败，请关掉已打开的旧文件')
+		sys.exit()
+
+
+
+def __export_all_excel_to_fbs():
 	for root, dirs, files in os.walk(excel_root_path, topdown=True):
 		for name in files:
 			file_path = os.path.join(root, name)
@@ -81,7 +99,7 @@ def __export_sheet_to_fbs(sheet):
 
 	# 写入文件
 	fbs_file_path = os.path.join(fbs_root_path, group_table_name + '.fbs')
-	print('已生成: ', fbs_file_path)
+	print('生成: ', fbs_file_path)
 	write_str = row_data_table_code_str + '\n' + group_data_table_code_str
 	with open(fbs_file_path, 'w') as f:
 		f.write(write_str)
@@ -96,32 +114,63 @@ def __get_all_fbs_file(root_path):
 	return file_list
 
 
-def __generate_target_file(fbs_file, target_folder_name, language_sign):
-	root_path = os.getcwd()
-	flatc_path = os.path.join(root_path, 'flatc/flatc.exe')
-	target_path = os.path.join(root_path, target_folder_name)
+def __generate_target_file(fbs_file, target_path, language_sign):
 	command = '{} --{} -o {} {} --gen-onefile'.format(flatc_path, language_sign, target_path, fbs_file)
 	os.system(command)
 
 
-def __generate_target(target_folder_name, language_sign):
+def __generate_target(target_path, language_sign):
 	print('生成 {} 代码'.format(language_sign))
 	fbs_path_list = __get_all_fbs_file(fbs_root_path)
 	for file_path in fbs_path_list:
-		__generate_target_file(file_path, target_folder_name, language_sign)
+		__generate_target_file(file_path, target_path, language_sign)
 
 
+def __clean():
+	__clean_directory(fbs_root_path)
+	__clean_directory(bytes_root_path)
+	__clean_directory(python_root_path)
+	__clean_directory(csharp_root_path)
+	__clean_directory(go_root_path)
+	__clean_directory(rust_root_path)
 
-bytes_root_path = os.path.join(os.getcwd(), 'generated_bytes')
-excel_root_path = os.path.join(os.getcwd(), 'excel')
-fbs_root_path = os.path.join(os.getcwd(), 'generated_fbs')
 
+# 本工具的根目录
+work_root = os.getcwd()
+
+# flatc.exe所在目录
+flatc_path = os.path.join(work_root, 'flatc/flatc.exe')
+
+# 存放excel的目录
+excel_root_path = os.path.join(work_root, 'excel')
+
+# 存放excel生成的flatbuffers二进制文件的目录
+bytes_root_path = os.path.join(work_root, 'generated_bytes')
+
+# 生成的 fbs 文件的目录
+fbs_root_path = os.path.join(work_root, 'generated_fbs')
+
+# fbs 生成的 python 代码目录
+python_root_path = os.path.join(work_root, 'generated_python')
+
+# fbs 生成的 c# 代码目录
+csharp_root_path = os.path.join(work_root, 'generated_csharp')
+
+# fbs 生成的 go 代码目录
+go_root_path = os.path.join(work_root, 'generated_go')
+
+# fbs 生成的 rust 代码目录
+rust_root_path = os.path.join(work_root, 'generated_rust')
 
 def run():
+	print('---------------- 清理旧文件 ----------------')
+	__clean()
+
 	print('---------------- 生成fbs文件, 生成不同语言代码 ----------------')
-	__export_all_excel_to_fbs(excel_root_path, bytes_root_path)
-	__generate_target('generated_python', 'python')	# 生成Python代码是必须的，因为要用来打包数据
-	__generate_target('generated_csharp', 'csharp')
-	__generate_target('generated_go', 'go')
+	__export_all_excel_to_fbs()
+	__generate_target(python_root_path, 'python')	# 生成Python代码是必须的，因为要用来打包数据
+	__generate_target(csharp_root_path, 'csharp')
+	__generate_target(go_root_path, 'go')
+	__generate_target(rust_root_path, 'rust')
 
 	# 还可以自己扩展，生成指定语言的代码

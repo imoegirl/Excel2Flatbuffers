@@ -211,8 +211,6 @@ __support_datatypes = [
 bytes_root_path = os.path.join(os.getcwd(), 'generated_bytes')
 excel_root_path = os.path.join(os.getcwd(), 'excel')
 
-
-
 def run():
 	print('---------------- 将excel生成flatbuffers二进制数据 ----------------')
 	__generate_all_excel_byte_data()

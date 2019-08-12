@@ -1,5 +1,6 @@
-import bytes_generator
 import fbs_generator
+import bytes_generator
+
 
 if __name__ == '__main__':
 	fbs_generator.run()		# 必须先生成代码
