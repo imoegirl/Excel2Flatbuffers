@@ -1,9 +1,10 @@
 
 table TShowMusicsConfigRowData {
-    ID:int32;
-    NoteName:string;
+    iD:int32;
+    noteName:string;
     BGMName:string;
     TotalTime:int32;
+    TotalTime2:float;
 }
 
 

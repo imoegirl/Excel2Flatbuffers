@@ -30,25 +30,29 @@ public struct TShowMusicsConfigRowData : IFlatbufferObject
 #endif
   public byte[] GetBGMNameArray() { return __p.__vector_as_array<byte>(8); }
   public int TotalTime { get { int o = __p.__offset(10); return o != 0 ? __p.bb.GetInt(o + __p.bb_pos) : (int)0; } }
+  public float TotalTime2 { get { int o = __p.__offset(12); return o != 0 ? __p.bb.GetFloat(o + __p.bb_pos) : (float)0.0f; } }
 
   public static Offset<TShowMusicsConfigRowData> CreateTShowMusicsConfigRowData(FlatBufferBuilder builder,
-      int ID = 0,
-      StringOffset NoteNameOffset = default(StringOffset),
+      int iD = 0,
+      StringOffset noteNameOffset = default(StringOffset),
       StringOffset BGMNameOffset = default(StringOffset),
-      int TotalTime = 0) {
-    builder.StartObject(4);
+      int TotalTime = 0,
+      float TotalTime2 = 0.0f) {
+    builder.StartObject(5);
+    TShowMusicsConfigRowData.AddTotalTime2(builder, TotalTime2);
     TShowMusicsConfigRowData.AddTotalTime(builder, TotalTime);
     TShowMusicsConfigRowData.AddBGMName(builder, BGMNameOffset);
-    TShowMusicsConfigRowData.AddNoteName(builder, NoteNameOffset);
-    TShowMusicsConfigRowData.AddID(builder, ID);
+    TShowMusicsConfigRowData.AddNoteName(builder, noteNameOffset);
+    TShowMusicsConfigRowData.AddID(builder, iD);
     return TShowMusicsConfigRowData.EndTShowMusicsConfigRowData(builder);
   }
 
-  public static void StartTShowMusicsConfigRowData(FlatBufferBuilder builder) { builder.StartObject(4); }
-  public static void AddID(FlatBufferBuilder builder, int ID) { builder.AddInt(0, ID, 0); }
-  public static void AddNoteName(FlatBufferBuilder builder, StringOffset NoteNameOffset) { builder.AddOffset(1, NoteNameOffset.Value, 0); }
+  public static void StartTShowMusicsConfigRowData(FlatBufferBuilder builder) { builder.StartObject(5); }
+  public static void AddID(FlatBufferBuilder builder, int iD) { builder.AddInt(0, iD, 0); }
+  public static void AddNoteName(FlatBufferBuilder builder, StringOffset noteNameOffset) { builder.AddOffset(1, noteNameOffset.Value, 0); }
   public static void AddBGMName(FlatBufferBuilder builder, StringOffset BGMNameOffset) { builder.AddOffset(2, BGMNameOffset.Value, 0); }
   public static void AddTotalTime(FlatBufferBuilder builder, int TotalTime) { builder.AddInt(3, TotalTime, 0); }
+  public static void AddTotalTime2(FlatBufferBuilder builder, float TotalTime2) { builder.AddFloat(4, TotalTime2, 0.0f); }
   public static Offset<TShowMusicsConfigRowData> EndTShowMusicsConfigRowData(FlatBufferBuilder builder) {
     int o = builder.EndObject();
     return new Offset<TShowMusicsConfigRowData>(o);

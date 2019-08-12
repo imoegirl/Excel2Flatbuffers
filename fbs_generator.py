@@ -3,15 +3,13 @@ from datetime import date, datetime
 import sys
 import os
 
-test_file = './excel/TestExcel.xlsx'
-fbs_root_path = './generated_fbs/'
-
 __excel_extension = 'xlsx'
 
 __support_datatypes = [
 	'string',
 	'int32',
 	'int64',
+	'float',
 	'byte',
 ]
 
@@ -28,11 +26,11 @@ table %s {
 }
 """
 
-def export_all_excel_to_fbs(excel_root_path, target_fbs_path):
+def __export_all_excel_to_fbs(excel_root_path, target_fbs_path):
 	for root, dirs, files in os.walk(excel_root_path, topdown=True):
 		for name in files:
 			file_path = os.path.join(root, name)
-			if file_path.endswith(__excel_extension):
+			if file_path.endswith(__excel_extension) and not name.startswith('~'):
 				__export_excel_to_fbs(file_path)
 
 def __export_excel_to_fbs(excel_path):
@@ -98,44 +96,32 @@ def __get_all_fbs_file(root_path):
 	return file_list
 
 
-def __generated_python_file(fbs_file):
+def __generate_target_file(fbs_file, target_folder_name, language_sign):
 	root_path = os.getcwd()
 	flatc_path = os.path.join(root_path, 'flatc/flatc.exe')
-	python_path = os.path.join(root_path, 'generated_python')
-	command = '{} --python -o {} {} --gen-onefile'.format(flatc_path, python_path, fbs_file)
+	target_path = os.path.join(root_path, target_folder_name)
+	command = '{} --{} -o {} {} --gen-onefile'.format(flatc_path, language_sign, target_path, fbs_file)
 	os.system(command)
-	# print(command)
 
 
-
-# 生成中间Python层
-def __generate_middle_python_file():
-	# os.chdir('./')
-	# root = os.getcwd()
-	# command = './flatc/flatc.exe --python -o ./generated_python/ ./generated_fbs/TShowMusicsConfig.fbs --gen-onefile'
-	# os.system(command)
-	root = os.path.join(os.getcwd(), 'generated_fbs')
-	fbs_path_list = __get_all_fbs_file(root)
+def __generate_target(target_folder_name, language_sign):
+	print('生成 {} 代码'.format(language_sign))
+	fbs_path_list = __get_all_fbs_file(fbs_root_path)
 	for file_path in fbs_path_list:
-		__generated_python_file(file_path)
+		__generate_target_file(file_path, target_folder_name, language_sign)
 
 
 
-# os.chdir('./')
-# __root_path = os.getcwd()
-
-export_all_excel_to_fbs('./excel', './generated_fbs')
-__generate_middle_python_file()
+bytes_root_path = os.path.join(os.getcwd(), 'generated_bytes')
+excel_root_path = os.path.join(os.getcwd(), 'excel')
+fbs_root_path = os.path.join(os.getcwd(), 'generated_fbs')
 
 
+def run():
+	print('---------------- 生成fbs文件, 生成不同语言代码 ----------------')
+	__export_all_excel_to_fbs(excel_root_path, bytes_root_path)
+	__generate_target('generated_python', 'python')	# 生成Python代码是必须的，因为要用来打包数据
+	__generate_target('generated_csharp', 'csharp')
+	__generate_target('generated_go', 'go')
 
-	# raw_data = item.split('text:')
-	# data = raw_data[1].trim()
-	# if data == '':
-	# 	continue
-	# print(data)
-
-# for row in sheet1.get_rows():
-# 	print(row)
-
-
+	# 还可以自己扩展，生成指定语言的代码

@@ -46,9 +46,17 @@ class TShowMusicsConfigRowData(object):
             return self._tab.Get(flatbuffers.number_types.Int32Flags, o + self._tab.Pos)
         return 0
 
-def TShowMusicsConfigRowDataStart(builder): builder.StartObject(4)
-def TShowMusicsConfigRowDataAddID(builder, ID): builder.PrependInt32Slot(0, ID, 0)
-def TShowMusicsConfigRowDataAddNoteName(builder, NoteName): builder.PrependUOffsetTRelativeSlot(1, flatbuffers.number_types.UOffsetTFlags.py_type(NoteName), 0)
+    # TShowMusicsConfigRowData
+    def TotalTime2(self):
+        o = flatbuffers.number_types.UOffsetTFlags.py_type(self._tab.Offset(12))
+        if o != 0:
+            return self._tab.Get(flatbuffers.number_types.Float32Flags, o + self._tab.Pos)
+        return 0.0
+
+def TShowMusicsConfigRowDataStart(builder): builder.StartObject(5)
+def TShowMusicsConfigRowDataAddID(builder, iD): builder.PrependInt32Slot(0, iD, 0)
+def TShowMusicsConfigRowDataAddNoteName(builder, noteName): builder.PrependUOffsetTRelativeSlot(1, flatbuffers.number_types.UOffsetTFlags.py_type(noteName), 0)
 def TShowMusicsConfigRowDataAddBGMName(builder, BGMName): builder.PrependUOffsetTRelativeSlot(2, flatbuffers.number_types.UOffsetTFlags.py_type(BGMName), 0)
 def TShowMusicsConfigRowDataAddTotalTime(builder, TotalTime): builder.PrependInt32Slot(3, TotalTime, 0)
+def TShowMusicsConfigRowDataAddTotalTime2(builder, TotalTime2): builder.PrependFloat32Slot(4, TotalTime2, 0.0)
 def TShowMusicsConfigRowDataEnd(builder): return builder.EndObject()
