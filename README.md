@@ -1,6 +1,11 @@
 # Excel2Flatbuffers
 此工具为了方便在游戏开发中，将 Excel 配表数据，以 flatbuffers 的形式存储，并将表结构转为不同语言的 flatbuffers 代码，用于在工程中使用。
 
+**注意: **
+
+**本工具测试时使用的 Flatbuffers 版本为 1.11.0，如果生成后的代码在您的工程中报错，请查看使用的 Flatbuffers版本是否过低**
+
+**FlatBuffers 下载地址: https://github.com/google/flatbuffers/releases**
 
 ## 工具内部做的事情如下
 
