@@ -1,5 +1,5 @@
 # Excel2Flatbuffers
-此工具为了方便在游戏开发中，将 Excel 配表数据，以 flatbuffers 的形式存储，并将表结构转为 flatbuffers 代码，然后自动生成客户端 (**Unity3D**) 数据加载解析代码，其他语言加载逻辑需要手写（因为我不会Go语言），例如服务器的Go语言端。
+此工具为了方便在游戏开发中，将 Excel 配表数据，以 flatbuffers 的形式存储，并将表结构转为不同语言的 flatbuffers 代码，用于在工程中使用。
 
 
 ## 工具内部做的事情如下
