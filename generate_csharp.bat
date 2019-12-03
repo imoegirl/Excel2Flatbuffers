@@ -1,1 +1,0 @@
-.\flatc\flatc.exe --csharp -o .\generated_csharp\ .\generated_fbs\TShowMusicsConfig.fbs --gen-onefile

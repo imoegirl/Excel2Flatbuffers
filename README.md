@@ -13,8 +13,6 @@
 
 - [x] 将 excel 表数据按 flatbuffers 的结构，将每一个表打包成二进制文件。
 
-- [ ] 生成 Unity3D 客户端加载解析二进制文件代码 (**这一步可以不用本工具生成的代码，可自己手写**)
-
 ## 如何使用
 
 `cd Excel2Flatbuffers` 进入工具目录
@@ -27,6 +25,29 @@
 >
 > 这个工具用到的Python是 python3.7.2，应该 python3.x 都可以运行吧
 
+## 在 Unity 中如何加载和使用生成后的代码和 bytes 文件，代码如下 (需根据自己的工程自己定制)
 
+```csharp
+private void LoadConfigData()
+{
+    string path = Path.Combine(Application.dataPath, "DanceMusicConfig.bytes");
+    byte[] bytes = File.ReadAllBytes(path);
 
-### 详细的说明文档，以及一些预先目录清理工作，晚点补充
+    ByteBuffer bb = new ByteBuffer(bytes);
+    DanceMusicConfig config = DanceMusicConfig.GetRootAsDanceMusicConfig(bb);
+    for(int i = 0; i < config.DatalistLength; ++i)
+    {
+        // 表中每一行的数据
+        DanceMusicConfigRowData rowData = config.Datalist(i).Value;
+        string noteName = rowData.NoteName;
+        string bgmName = rowData.BGMName;
+        int totalTime = rowData.TotalTime;
+        float totalTime2 = rowData.TotalTime2;
+
+        // -- 可以自己建立一个数据类，然后将上面的数值存到自己的数据类中，去使用
+    }
+}
+```
+
+> 对于任何一个表，最后生成的代码中， XXXConfig，就是整个表的类，XXXConfigRowData，这是对应这个表中的一行数据
+
